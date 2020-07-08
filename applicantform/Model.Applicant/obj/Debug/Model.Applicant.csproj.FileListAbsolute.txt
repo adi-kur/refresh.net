@@ -1,0 +1,12 @@
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\bin\Debug\Model.Applicant.dll.config
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\bin\Debug\Model.Applicant.dll
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\bin\Debug\Model.Applicant.pdb
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\bin\Debug\EntityFramework.dll
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\bin\Debug\EntityFramework.xml
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\obj\Debug\Model.Applicant.csproj.CoreCompileInputs.cache
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\obj\Debug\Model.Applicant.csproj.CopyComplete
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\obj\Debug\Model.Applicant.dll
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\obj\Debug\Model.Applicant.pdb
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\bin\Debug\EntityFramework.SqlServer.dll
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\bin\Debug\EntityFramework.SqlServer.xml
+D:\KUR NITIP 2020\Codeflash\applicantform\Model.Applicant\obj\Debug\Model.Applicant.csprojAssemblyReference.cache

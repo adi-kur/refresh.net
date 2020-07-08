@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Informasi Kontak</h2>
+
+@using (Html.BeginForm("Index", "Applicant", FormMethod.Post, new { id = "Id_Form_Create" }))
+{
+
+    <form>
+        <div class="form-group">
+            <label for="Name">Nama Anda *</label>
+            <input type="text" class="form-control" id="Name" placeholder="Your answer">
+        </div>
+        <div class="form-group">
+            <label for="Contact_Number *">Nomor Handphoe</label>
+            <input type="text" class="form-control" id="Contact_Number" placeholder="Your answer">
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" class="form-control" id="Email" placeholder="Your answer">
+        </div>
+        <div class="form-group">
+            <label for="Date_Of_Birth">Tanggal Lahir *</label>
+            <input type="date" class="form-control" id="Date_Of_Birth" placeholder="Your answer">
+        </div>
+        <div class="form-group">
+            <label for="Address">Alamat</label>
+            <input type="text" class="form-control" id="Address" placeholder="Your answer">
+        </div>
+        <div class="form-group">
+            <label for="Major">Jurusan kuliah yang dibidangi ?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Major" id="Major" value="option1">
+                <label class="form-check-label" for="exampleRadios1">
+                    IT
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Major" id="Major" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                    Non IT
+                </label>
+            </div>
+            @*<input type="text" class="form-control" id="Major" placeholder="Your answer">*@
+        </div>
+        <div class="form-group">
+            <label for="Question">Pertanyaan ?</label>
+            <input type="text" class="form-control" id="Question" placeholder="Your answer">
+        </div>
+
+        <button id="btn-Add" type="submit" class="btn btn-danger">Kirim</button>
+    </form>
+}
+
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script>
+
+
+    $(document).ready(function() {
+        $("#Id_Form_Create").validate({
+            errorClass: 'errors',
+            rules: {
+
+                Name: {
+                    required: true,
+                },
+                Contact_Number: {
+                    required: true,
+                    number: true,
+                    min: 10,
+                    maxlength: 13,
+                },
+                Date_Of_Birth: {
+                    required: true,
+                },
+                Address: {
+                    required: true,
+                }
+            },
+            messages: {
+                Name: {
+                    required: "Please input Name",
+                },
+                Contact_Number: {
+                    required: "Please input telephone",
+                    number: "Must Be Number",
+                    min: "10 Digits",
+                    maxlength: "Max Length 13"
+
+                },
+
+                Date_Of_Birth: {
+                    required: "Please Input tanggal lahir",
+
+                },
+                Address: {
+                    required: "Please input alamat",
+
+                }
+            },
+
+            submitHandler: function (form) {
+                var dataForm = $(form).serialize();
+                debugger;
+                debugger;
+                $.ajax({
+                    url: '/Applicant/Index',
+                    data: dataForm,
+                    method: 'post',
+                    //dataType: 'json',
+                    success: function (response) {
+                        debugger;
+                        if (response.message == "Berhasil") {
+                            window.location.href = '../Applicant/Index'
+
+                        }
+                        else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            }
+        });
+        return false;
+    });
+
+      
+
+</script>

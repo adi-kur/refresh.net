@@ -1,0 +1,177 @@
+﻿@model List<ViewModel.Applicant.VMApplicant>
+@{
+    ViewBag.Title = "List Pendaftar";
+}
+
+<h2>Index Data Pendaftar</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped text-center table-bordered">
+        <thead>
+            <tr>
+                <td>
+                    NAMA
+                </td>
+                <td>
+                    NO HP
+                </td>
+                <td>
+                    EMAIL
+                </td>
+                <td>
+                    TANGGAL LAHIR
+                </td>
+                <td>
+                    ALAMAT
+                </td>
+                <td>
+                    MAJOR
+                </td>
+                <td>
+                    QUESTION
+                </td>
+                <td>
+                    ACTION
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model)
+            {
+                <tr>
+
+                    <td>
+                        @a.Name
+                    </td>
+                    <td>
+                        @a.Contact_Number
+                    </td>
+                    <td>
+                        @a.Email
+                    </td>
+                    <td>
+                        @a.Date_Of_Birth.ToString("yyyy/MM/dd")
+                    </td>
+                    <td>
+                        @a.Address
+                    </td>
+                    <td>
+                        @if (a.Major == false)
+                        {
+                            <span>Non IT</span>
+                        }
+                        else
+                        {
+                            <span>IT</span>
+                        }
+                    </td>
+                    <td>
+                        @a.Question
+                    </td>
+                    <td>
+                        <button class="btn btn-warning btn cls-edit" onclick="Edit(@a.ID)">Edit</button>
+                        <button class="btn btn-success cls-delete" onclick="Detail123(@a.ID)">Detail</button>
+                        <button class="btn btn-danger cls-delete" onclick="Delete123(@a.ID)">Delete</button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="id-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#D33E1E">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="id-body-modal">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="id-modals" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#191970">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="id-body-modals">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header" id="head-delete" style="background-color:#191970">
+                <h5 class="modal-title" id="title-delete">Yakin Hapus ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="id-body-delete">
+                ...
+            </div>
+            <div class="modal-footer">
+                <div style="float:right;">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <span aria-hidden="true">Batal</span>
+                    </button>
+                    <button id="id-btn-submit" type="submit" class="btn btn-primary">Ya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    function Edit(Daftar) {
+        $.ajax({
+            url: '/Applicant/Index',
+            method: 'get',
+            data:
+            {
+                Daftar: Daftar
+            },
+            success: function (hasil) {
+                debugger;
+                $("#id-body-modals").html(hasil);
+                $("#id-modals").modal("show");
+            }
+        });
+    }
+
+    function Delete123(ID) {
+        $("#id-body-delete").empty();
+        //("#title-delete").append("Hapus");
+        $("#id-body-delete").append("Anda yakin ingin menghapus Data ?");
+        $("#modal-delete").modal("show");
+
+        $("#id-btn-submit").click(function () {
+            $.ajax({
+                url: '@Url.Action("Delete", "Daftar")',
+                method: 'post',
+                data: {
+                    Daftar: ID
+                },
+                success: function (hasil) {
+                    window.location.href = '@Url.Action("Index","Daftar")';
+                }
+            });
+        })
+    }
+</script>

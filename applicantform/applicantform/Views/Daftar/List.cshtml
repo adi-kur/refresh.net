@@ -1,0 +1,74 @@
+﻿@*@model List<ViewModel.Applicant.VMApplicant>
+    @{
+        ViewBag.Title = "List Pendaftar";
+    }
+
+    <h2>Index Data Pendaftar</h2>
+
+    <input id="btn-Add" class="btn btn-info" style="background-color:#191970" type="button" value="Input Data">
+    <div class="table-responsive">
+        <table class="table table-striped text-center table-bordered">
+            <thead>
+                <tr>
+                    <td>
+                        NAMA
+                    </td>
+                    <td>
+                        NO HP
+                    </td>
+                    <td>
+                        EMAIL
+                    </td>
+                    <td>
+                        TANGGAL LAHIR
+                    </td>
+                    <td>
+                        ALAMAT
+                    </td>
+                    <td>
+                        MAJOR
+                    </td>
+                    <td>
+                        QUESTION
+                    </td>
+                    <td>
+                        ACTION
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @a.Name
+                        </td>
+                        <td>
+                            @a.Contact_Number
+                        </td>
+                        <td>
+                            @a.Email
+                        </td>
+                        <td>
+                            @a.Date_Of_Birth
+                        </td>
+                        <td>
+                            @a.Address
+                        </td>
+                        <td>
+                            @a.Major
+                        </td>
+                        <td>
+                            @a.Question
+                        </td>
+                        <td>
+                            <button class="btn btn-warning btn cls-edit" onclick="Edit(@a.ID)">Edit</button>
+                            <button class="btn btn-danger btn cls-delete" onclick="Delete123(@a.ID)">Delete</button>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>*@
